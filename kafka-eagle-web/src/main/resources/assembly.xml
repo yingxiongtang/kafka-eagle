@@ -24,10 +24,17 @@
 			</includes>
 		</fileSet>
 		<fileSet>
-			<directory>src/main/resources/sql/</directory>
-			<outputDirectory>/sql</outputDirectory>
+			<directory>src/main/resources/font/</directory>
+			<outputDirectory>/font</outputDirectory>
 			<includes>
-				<include>ke.sql</include>
+				<include>*.flf</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources/db/</directory>
+			<outputDirectory>/db</outputDirectory>
+			<includes>
+				<include></include>
 			</includes>
 		</fileSet>
 		<fileSet>

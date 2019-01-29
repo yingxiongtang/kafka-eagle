@@ -18,7 +18,7 @@ $(document).ready(function() {
 			"mData" : 'created'
 		}, {
 			"mData" : 'modify'
-		},{
+		}, {
 			"mData" : 'operate'
 		} ]
 	});
@@ -40,10 +40,9 @@ $(document).ready(function() {
 
 	$(document).on('click', 'a[name=remove]', function() {
 		var href = $(this).attr("href");
-		var group = href.split("#")[1].split("/")[0];
-		var topic = href.split("#")[1].split("/")[1];
+		var id = href.split("#")[1].split("/")[0];
 		$("#remove_div").html("");
-		$("#remove_div").append("<a href='/ke/alarm/" + group + "/" + topic + "/del' class='btn btn-danger'>Remove</a>");
+		$("#remove_div").append("<a href='/ke/alarm/" + id + "/del' class='btn btn-danger'>Remove</a>");
 		$('#doc_info').modal({
 			backdrop : 'static',
 			keyboard : false
@@ -53,6 +52,32 @@ $(document).ready(function() {
 			left : '50%',
 			top : '50%',
 			transform : 'translateX(-50%) translateY(-50%)'
+		});
+	});
+
+	$(document).on('click', 'a[name=modify]', function() {
+		var href = $(this).attr("href");
+		var id = href.split("#")[1].split("/")[0];
+		$("#ke_consumer_id_lag").val(id);
+		$('#modfiy_info').modal({
+			backdrop : 'static',
+			keyboard : false
+		});
+		$('#modfiy_info').modal('show').css({
+			position : 'fixed',
+			left : '50%',
+			top : '50%',
+			transform : 'translateX(-50%) translateY(-50%)'
+		});
+		
+		$.ajax({
+			type : 'get',
+			dataType : 'json',
+			url : '/ke/alarm/consumer/modify/' + id + '/ajax',
+			success : function(datas) {
+				$("#ke_consumer_name_lag").val(datas.lag);
+				$("#ke_owners_modify").val(datas.owners);
+			}
 		});
 	});
 });

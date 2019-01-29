@@ -12,6 +12,7 @@
 		<property name="targetMethod" value="mbeanQuartz" />
 		<property name="concurrent" value="false" />
 	</bean>
+	<!-- task2 -->
 	<bean id="mbeanCleanDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="mbeanSchedule" />

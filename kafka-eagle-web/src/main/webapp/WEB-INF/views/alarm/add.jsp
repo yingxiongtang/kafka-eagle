@@ -36,8 +36,8 @@
 					<div class="alert alert-info alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">×</button>
-						<i class="fa fa-info-circle"></i> <strong>Create a
-							certain threshold topic, and alarm.</strong>
+						<i class="fa fa-info-circle"></i> <strong>Add an alert to
+							the topic being consumed.</strong>
 					</div>
 				</div>
 			</div>
@@ -151,7 +151,7 @@
 			}, 3000);
 			return false;
 		}
-		
+
 		$('#ke_topic_alarms').val(ke_topic_alarms);
 		$('#ke_group_alarms').val(ke_group_alarms);
 		return true;

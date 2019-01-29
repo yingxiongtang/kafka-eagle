@@ -35,12 +35,16 @@ public class KConstants {
 	public interface Kafka {
 		public final static String CONSUMER_OFFSET_TOPIC = "__consumer_offsets";
 		public final static String KAFKA_EAGLE_SYSTEM_GROUP = "kafka.eagle.system.group";
+		public final static String AUTO_COMMIT = "true";
+		public final static String AUTO_COMMIT_MS = "1000";
+		public final static String EARLIEST = "earliest";
 		public final static String JAVA_SECURITY = "java.security.auth.login.config";
 		public final static int TIME_OUT = 100;
-		public final static long POSITION = 5000;// default 5000
+		public final static long POSITION = SystemConfigUtils.getLongProperty("kafka.eagle.sql.topic.records.max") == 0 ? 5000 : SystemConfigUtils.getLongProperty("kafka.eagle.sql.topic.records.max");
 		public final static String PARTITION_CLASS = "partitioner.class";
 		public final static String KEY_SERIALIZER = "key.serializer";
 		public final static String VALUE_SERIALIZER = "value.serializer";
+		public final static String UNKOWN = "Unknown";
 	}
 
 	/** Mail args setting. */
@@ -93,10 +97,66 @@ public class KConstants {
 		public final static String FAILED_PRODUCE_REQUEST = "produce";
 
 		/** MBean keys. */
-		public final static String MESSAGEIN = "MessageIn";
-		public final static String BYTEIN = "ByteIn";
-		public final static String BYTEOUT = "ByteOut";
-		public final static String FAILEDFETCHREQUEST = "FailedFetchRequest";
-		public final static String FAILEDPRODUCEREQUEST = "FailedProduceRequest";
+		public final static String MESSAGEIN = "message_in";
+		public final static String BYTEIN = "byte_in";
+		public final static String BYTEOUT = "byte_out";
+		public final static String BYTESREJECTED = "byte_rejected";
+		public final static String FAILEDFETCHREQUEST = "failed_fetch_request";
+		public final static String FAILEDPRODUCEREQUEST = "failed_produce_request";
+		public final static String PRODUCEMESSAGECONVERSIONS = "produce_message_conversions";
+		public final static String TOTALFETCHREQUESTSPERSEC = "total_fetch_requests";
+		public final static String TOTALPRODUCEREQUESTSPERSEC = "total_produce_requests";
+		public final static String REPLICATIONBYTESINPERSEC = "replication_bytes_out";
+		public final static String REPLICATIONBYTESOUTPERSEC = "replication_bytes_in";
 	}
+
+	public interface Linux {
+		public static final String DEVICE = "sd";
+		public static final String LO = "lo";
+		public static final String CPU = "cpu";
+		public static final String IO = "io";
+		public static final String MemTotal = "MemTotal";
+		public static final String MemFree = "MemFree";
+		public static final String TCP = "Tcp";
+		public static final String CurrEstab = "CurrEstab";
+		public static final int SLEEP = 3000;
+	}
+
+	public interface ZK {
+		public static final String ZK_SEND_PACKETS = "zk_packets_sent";
+		public static final String ZK_RECEIVEDPACKETS = "zk_packets_received";
+		public static final String ZK_NUM_ALIVECONNRCTIONS = "zk_num_alive_connections";
+		public static final String ZK_OUTSTANDING_REQUESTS = "zk_outstanding_requests";
+
+	}
+
+	public interface TopicCache {
+		public static final String NAME = "TopicCacheData";
+	}
+
+	public interface ServerDevice {
+		public static final int TIME_OUT = 3000;
+		public static final int BUFFER_SIZE = 8049;
+	}
+
+	public interface CollectorType {
+		public static final String ZK = "zookeeper";
+		public static final String KAFKA = "kafka";
+	}
+
+	public interface Zookeeper {
+		public static final String LEADER = "leader";
+	}
+
+	public interface IM {
+		public static String TITLE = "Kafka Eagle Alert";
+	}
+
+	public interface WeChat {
+		public static String TOUSER = "@all";
+		public static String TOPARTY = "PartyID1|PartyID2";
+		public static String TOTAG = "TagID1 | TagID2";
+		public static long AGENTID = 1;
+	}
+
 }

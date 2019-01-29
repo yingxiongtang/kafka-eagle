@@ -56,7 +56,7 @@
 			data-toggle="dropdown"><i class="fa fa-sitemap"></i>
 				${clusterAlias} </a></li>
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown"><i class="fa fa-bookmark"></i> V1.2.0 </a></li>
+			data-toggle="dropdown"><i class="fa fa-bookmark"></i> V1.2.9 </a></li>
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
 			data-toggle="dropdown" aria-expanded="false"><i
 				class="fa fa-user"></i> ${LOGIN_USER_SESSION.realname} <b
@@ -81,6 +81,8 @@
 							class="fa fa-edit fa-fw"></i> Create</a></li>
 					<li id="navbar_list"><a href="/ke/topic/list"><i
 							class="fa fa-table fa-fw"></i> List</a></li>
+					<%-- <li id="navbar_list"><a href="/ke/topic/export"><i
+							class="fa fa-download fa-fw"></i> Export</a></li> --%>
 					<li id="navbar_list"><a href="/ke/topic/message"><i
 							class="fa fa-file-text fa-fw"></i> Message</a></li>
 					<li id="navbar_list"><a href="/ke/topic/mock"><i
@@ -105,10 +107,12 @@
 				<ul id="demo4" class="collapse">
 					<li id="navbar_cli"><a href="/ke/metrics/brokers"><i
 							class="fa fa-sitemap fa-fw"></i> Brokers</a></li>
-					<li id="navbar_cli"><a href="/ke/metrics/trend"><i
-							class="fa fa-bar-chart-o fa-fw"></i> Trend</a></li>
+					<li id="navbar_cli"><a href="/ke/metrics/kafka"><i
+							class="fa fa-bar-chart-o fa-fw"></i> Kafka</a></li>
+					<li id="navbar_cli"><a href="/ke/metrics/zk"><i
+							class="fa fa-area-chart fa-fw"></i> Zookeeper</a></li>
 				</ul></li>
-			<li><a href="#" data-toggle="collapse" data-target="#demo1"><i
+			<!-- <li><a href="#" data-toggle="collapse" data-target="#demo1"><i
 					class="fa fa-fw fa-bell"></i> Alarm <i
 					class="fa fa-fw fa-caret-down"></i></a>
 				<ul id="demo1" class="collapse">
@@ -116,7 +120,37 @@
 							class="fa fa-info-circle fa-fw"></i> Add</a></li>
 					<li id="navbar_modify"><a href="/ke/alarm/modify"><i
 							class="fa fa-edit fa-fw"></i> Modify</a></li>
+				</ul></li> -->
+			<li><a href="#" data-toggle="collapse" data-target="#demo1"><i
+					class="fa fa-fw fa-bell"></i> Alarm <i
+					class="fa fa-fw fa-caret-down"></i></a>
+				<ul id="demo1" class="collapse">
+					<li><a href="#" data-toggle="collapse" data-target="#demo1_1"><i
+							class="fa fa-fw fa-users"></i> Consumer <i
+							class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="demo1_1" class="collapse"
+							style="list-style: none; margin-left: -40px">
+							<li id="navbar_add"><a href="/ke/alarm/add"
+								style="display: block; padding: 10px 15px 10px 68px; text-decoration: none; color: #999;"><i
+									class="fa fa-info-circle fa-fw"></i> Add</a></li>
+							<li id="navbar_modify"><a href="/ke/alarm/modify"
+								style="display: block; padding: 10px 15px 10px 68px; text-decoration: none; color: #999;"><i
+									class="fa fa-edit fa-fw"></i> Modify</a></li>
+						</ul></li>
+					<li><a href="#" data-toggle="collapse" data-target="#demo1_2"><i
+							class="fa fa-fw fa-cloud"></i> Cluster <i
+							class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="demo1_2" class="collapse"
+							style="list-style: none; margin-left: -40px">
+							<li id="navbar_create"><a href="/ke/alarm/create"
+								style="display: block; padding: 10px 15px 10px 68px; text-decoration: none; color: #999;"><i
+									class="fa fa-info-circle fa-fw"></i> Create</a></li>
+							<li id="navbar_history"><a href="/ke/alarm/history"
+								style="display: block; padding: 10px 15px 10px 68px; text-decoration: none; color: #999;"><i
+									class="fa fa-edit fa-fw"></i> History</a></li>
+						</ul></li>
 				</ul></li>
+
 			<c:if test="${WHETHER_SYSTEM_ADMIN==1}">
 				<li><a href="#" data-toggle="collapse" data-target="#demo3"><i
 						class="fa fa-fw fa-cog"></i> System <i

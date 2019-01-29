@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.smartloli.kafka.eagle</groupId>
 		<artifactId>kafka-eagle</artifactId>
-		<version>1.2.0</version>
+		<version>1.2.9</version>
 	</parent>
 	<artifactId>kafka-eagle-web</artifactId>
 	<packaging>war</packaging>
@@ -12,7 +12,7 @@
 	<properties>
 		<package.name>ke</package.name>
 		<junit.version>4.11</junit.version>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.1.6.RELEASE</spring.version>
 		<mybatis.version>3.2.6</mybatis.version>
@@ -143,11 +143,9 @@
 			<artifactId>quartz</artifactId>
 			<version>2.2.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-asl</artifactId> 
+			<version>1.9.13</version> </dependency> <dependency> <groupId>org.codehaus.jackson</groupId> 
+			<artifactId>jackson-core-asl</artifactId> <version>1.9.13</version> </dependency> -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
@@ -182,6 +180,17 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>1.8.10</version>
+		</dependency>
+		<!-- add by MappingJackson2HttpMessageConverter -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
 		</dependency>
 	</dependencies>
 
@@ -224,7 +233,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-		
+
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>

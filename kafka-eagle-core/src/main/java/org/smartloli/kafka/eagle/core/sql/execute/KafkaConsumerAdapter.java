@@ -17,6 +17,7 @@
  */
 package org.smartloli.kafka.eagle.core.sql.execute;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -61,6 +62,9 @@ public class KafkaConsumerAdapter {
 		props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, kafkaService.getKafkaBrokerServer(kafkaSql.getClusterAlias()));
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getCanonicalName());
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getCanonicalName());
+		if (SystemConfigUtils.getBooleanProperty("kafka.eagle.sql.fix.error")) {
+			props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, Kafka.EARLIEST);
+		}
 		if (SystemConfigUtils.getBooleanProperty("kafka.eagle.sasl.enable")) {
 			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, SystemConfigUtils.getProperty("kafka.eagle.sasl.protocol"));
 			props.put(SaslConfigs.SASL_MECHANISM, SystemConfigUtils.getProperty("kafka.eagle.sasl.mechanism"));
@@ -84,7 +88,7 @@ public class KafkaConsumerAdapter {
 		JSONArray datasets = new JSONArray();
 		boolean flag = true;
 		while (flag) {
-			ConsumerRecords<String, String> records = consumer.poll(Kafka.TIME_OUT);
+			ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(Kafka.TIME_OUT));
 			for (ConsumerRecord<String, String> record : records) {
 				JSONObject object = new JSONObject();
 				object.put(TopicSchema.MSG, record.value());

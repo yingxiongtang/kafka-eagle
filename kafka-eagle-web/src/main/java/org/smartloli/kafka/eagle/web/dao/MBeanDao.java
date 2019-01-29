@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.smartloli.kafka.eagle.common.protocol.KpiInfo;
+import org.smartloli.kafka.eagle.common.protocol.topic.TopicLagInfo;
 
 /**
  * MBeanDao interface definition
@@ -34,13 +35,19 @@ public interface MBeanDao {
 	/** Collection statistics data from kafka jmx & insert into table. */
 	public int insert(List<KpiInfo> kpi);
 
-	/** Get daily data. */
-	public List<KpiInfo> daily(Map<String, Object> params);
-
-	/** Day or weekly query data. */
-	public List<KpiInfo> day(Map<String, Object> params);
+	/** Query collector data. */
+	public List<KpiInfo> query(Map<String, Object> params);
 
 	/** Crontab clean data. */
 	public void remove(int tm);
+
+	/** Set consumer topic lag metrics. */
+	public int setConsumerLag(List<TopicLagInfo> topicLag);
+
+	/** Get consumer topic lag metrics. */
+	public List<TopicLagInfo> getConsumerLag(Map<String, Object> params);
+
+	/** Clean lag data. */
+	public void cleanLagData(int tm);
 
 }
